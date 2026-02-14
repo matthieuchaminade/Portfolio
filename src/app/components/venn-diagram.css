@@ -1,0 +1,12 @@
+@media (max-width: 1021px) {
+  .venn-diagram-responsive-padding {
+    padding: 16px;
+  }
+}
+
+@media (max-width: 800px) {
+  .venn-diagram-fixed-width {
+    width: 800px !important;
+    min-width: 800px !important;
+  }
+} 

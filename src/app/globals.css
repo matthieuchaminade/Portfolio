@@ -19,3 +19,35 @@ body {
   background: var(--background);
   font-family: Arial, Helvetica, sans-serif;
 }
+
+@font-face {
+  font-family: 'ABCDiatypeThin';
+  src: url('/fonts/ABCDiatype-Thin-Trial.woff') format('woff');
+  font-weight: 100;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'GT America Mono Ultra Light';
+  src: url('/fonts/GT-America-Mono-Ultra-Light-Trial.woff') format('woff');
+  font-weight: 100;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'SpaceMono';
+  src: url('/fonts/SpaceMono-Regular.ttf') format('truetype');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* Remove dark overlay on video hover (native controls) */
+video::-webkit-media-controls-overlay-enclosure {
+  display: none !important;
+}
+video::-webkit-media-controls-enclosure {
+  background: transparent !important;
+}
