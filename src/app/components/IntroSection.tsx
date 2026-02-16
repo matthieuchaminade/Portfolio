@@ -4,6 +4,12 @@ import VennDiagram from "./VennDiagram";
 import WhoTextBlock from "./WhoTextBlock";
 import Header from "./Header";
 
+const INTRO_IMAGES = [
+  { src: "/images/Introsection/doodle_phone.jpg", col: "8 / 11", row: "1 / 5" },   // top right
+  { src: "/images/Introsection/doodle_lamp.jpg", col: "1 / 4", row: "5 / 9" },     // bottom left
+  { src: "/images/Introsection/doodle_fan.jpg", col: "8 / 11", row: "5 / 9" },     // bottom right
+];
+
 const IntroSection = () => {
   const [scrollY, setScrollY] = useState(0);
   const [blur, setBlur] = useState(0);
@@ -41,12 +47,30 @@ const IntroSection = () => {
   return (
     <section
       id="intro-section"
-      className="flex items-center justify-center min-h-screen bg-white relative overflow-hidden"
-      style={{ position: "relative", filter: `blur(${blur}px)`, transition: "filter 0.2s" }}
+      className="flex items-center justify-center min-h-screen relative overflow-hidden"
+      style={{ position: "relative", background: "#F3F1EE", filter: `blur(${blur}px)`, transition: "filter 0.2s" }}
     >
+      <div
+        className="absolute inset-0 z-0 grid grid-cols-10 gap-2 p-4 pointer-events-none"
+        style={{ gridTemplateRows: "repeat(8, minmax(0, 1fr))" }}
+      >
+        {INTRO_IMAGES.map((img, i) => (
+          <div
+            key={i}
+            className="rounded-[50px] overflow-hidden flex items-center justify-center min-h-0 min-w-0"
+            style={{ gridColumn: img.col, gridRow: img.row }}
+          >
+            <img
+              src={img.src}
+              alt=""
+              className="max-w-full max-h-full w-auto h-auto object-contain rounded-[50px] opacity-75"
+            />
+          </div>
+        ))}
+      </div>
       <Header />
       <div
-        className="w-full max-w-5xl aspect-[27/16] mx-auto flex items-center justify-center venn-diagram-responsive-padding venn-diagram-fixed-width"
+        className="w-full max-w-5xl aspect-[27/16] relative z-10 mx-auto flex items-center justify-center venn-diagram-responsive-padding venn-diagram-fixed-width"
         style={{ transform: `translateY(${vennOffset}px)` }}
       >
         <VennDiagram />
