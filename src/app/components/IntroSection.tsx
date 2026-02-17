@@ -4,16 +4,39 @@ import VennDiagram from "./VennDiagram";
 import WhoTextBlock from "./WhoTextBlock";
 import Header from "./Header";
 
-const INTRO_IMAGES = [
-  { src: "/images/Introsection/doodle_phone.jpg", col: "8 / 11", row: "1 / 5" },   // top right
-  { src: "/images/Introsection/doodle_lamp.jpg", col: "1 / 4", row: "5 / 9" },     // bottom left
-  { src: "/images/Introsection/doodle_fan.jpg", col: "8 / 11", row: "5 / 9" },     // bottom right
+// Fixed grid slots (avoid center so text is never covered)
+const INTRO_SLOTS = [
+  { col: "8 / 11", row: "1 / 5" },   // top right
+  { col: "1 / 4", row: "5 / 9" },    // bottom left
+  { col: "8 / 11", row: "5 / 9" },   // bottom right
 ];
 
+const INTRO_IMAGE_SRCS = [
+  "/images/Introsection/doodle_phone.jpg",
+  "/images/Introsection/doodle_lamp.jpg",
+  "/images/Introsection/doodle_fan.jpg",
+  "/images/Introsection/surface_mouse.jpg",
+];
+
+function shuffle<T>(arr: T[]): T[] {
+  const out = [...arr];
+  for (let i = out.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [out[i], out[j]] = [out[j], out[i]];
+  }
+  return out;
+}
+
 const IntroSection = () => {
+  // Fixed first 3 for SSR and first client render so hydration matches; pick 3 at random after mount.
+  const [imageOrder, setImageOrder] = useState(() => INTRO_IMAGE_SRCS.slice(0, 3));
   const [scrollY, setScrollY] = useState(0);
   const [blur, setBlur] = useState(0);
   const rafIdRef = useRef<number>(0);
+
+  useEffect(() => {
+    setImageOrder(shuffle([...INTRO_IMAGE_SRCS]).slice(0, 3));
+  }, []);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -54,14 +77,14 @@ const IntroSection = () => {
         className="absolute inset-0 z-0 grid grid-cols-10 gap-2 p-4 pointer-events-none"
         style={{ gridTemplateRows: "repeat(8, minmax(0, 1fr))" }}
       >
-        {INTRO_IMAGES.map((img, i) => (
+        {INTRO_SLOTS.map((slot, i) => (
           <div
             key={i}
             className="rounded-[50px] overflow-hidden flex items-center justify-center min-h-0 min-w-0"
-            style={{ gridColumn: img.col, gridRow: img.row }}
+            style={{ gridColumn: slot.col, gridRow: slot.row }}
           >
             <img
-              src={img.src}
+              src={imageOrder[i]}
               alt=""
               className="max-w-full max-h-full w-auto h-auto object-contain rounded-[50px] opacity-75"
             />
