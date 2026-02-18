@@ -12,6 +12,7 @@ export interface Project {
     hero: string;
     gallery?: string[];
     video?: string;
+    poster?: string;
     documents?: string[];
   };
   links?: {

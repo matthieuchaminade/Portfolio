@@ -51,19 +51,34 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project }) => {
     }}>
       <div style={{ position: "relative", maxWidth: "800px", margin: "0 auto" }}>
         {project.assets.video ? (
-          <video
-            ref={videoRef}
-            src={project.assets.video}
-            loop
-            muted
-            playsInline
+          <div
             style={{
+              aspectRatio: "16/9",
+              minHeight: 200,
               width: "100%",
-              height: "auto",
-              display: "block",
-              borderRadius: "32px"
+              borderRadius: "32px",
+              overflow: "hidden",
+              background: "#000",
+              isolation: "isolate",
             }}
-          />
+          >
+            <video
+              ref={videoRef}
+              src={project.assets.video}
+              poster={project.assets.poster}
+              preload="metadata"
+              loop
+              muted
+              playsInline
+              style={{
+                width: "100%",
+                height: "100%",
+                display: "block",
+                borderRadius: "32px",
+                objectFit: "contain",
+              }}
+            />
+          </div>
         ) : (
           <img
             src={project.assets.hero}

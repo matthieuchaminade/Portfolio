@@ -1,113 +1,14 @@
 "use client";
-import React, { useEffect, useRef, useState } from "react";
-import VennDiagram from "./VennDiagram";
-import WhoTextBlock from "./WhoTextBlock";
-import Header from "./Header";
-
-// Fixed grid slots (avoid center so text is never covered)
-const INTRO_SLOTS = [
-  { col: "8 / 11", row: "1 / 5" },   // top right
-  { col: "1 / 4", row: "5 / 9" },    // bottom left
-  { col: "8 / 11", row: "5 / 9" },   // bottom right
-];
-
-const INTRO_IMAGE_SRCS = [
-  "/images/Introsection/doodle_phone.jpg",
-  "/images/Introsection/doodle_lamp.jpg",
-  "/images/Introsection/doodle_fan.jpg",
-  "/images/Introsection/surface_mouse.jpg",
-];
-
-function shuffle<T>(arr: T[]): T[] {
-  const out = [...arr];
-  for (let i = out.length - 1; i > 0; i--) {
-    const j = Math.floor(Math.random() * (i + 1));
-    [out[i], out[j]] = [out[j], out[i]];
-  }
-  return out;
-}
+import React from "react";
+import IntroLayout from "./IntroLayout";
+import WhoIntroCenter from "./WhoIntroCenter";
 
 const IntroSection = () => {
-  // Fixed first 3 for SSR and first client render so hydration matches; pick 3 at random after mount.
-  const [imageOrder, setImageOrder] = useState(() => INTRO_IMAGE_SRCS.slice(0, 3));
-  const [scrollY, setScrollY] = useState(0);
-  const [blur, setBlur] = useState(0);
-  const rafIdRef = useRef<number>(0);
-
-  useEffect(() => {
-    setImageOrder(shuffle([...INTRO_IMAGE_SRCS]).slice(0, 3));
-  }, []);
-
-  useEffect(() => {
-    const handleScroll = () => {
-      if (rafIdRef.current !== 0) return;
-      rafIdRef.current = requestAnimationFrame(() => {
-        rafIdRef.current = 0;
-        setScrollY(window.scrollY);
-        const section = document.getElementById("intro-section");
-        if (section) {
-          const rect = section.getBoundingClientRect();
-          const windowHeight = window.innerHeight;
-          const blurStart = 0.3;
-          const rawProgress = (windowHeight - rect.bottom) / windowHeight;
-          const progress = Math.min(Math.max((rawProgress - blurStart) / (1 - blurStart), 0), 1);
-          setBlur(progress * 10);
-        }
-      });
-    };
-    window.addEventListener("scroll", handleScroll, { passive: true });
-    handleScroll(); // run once on mount
-    return () => {
-      if (rafIdRef.current) cancelAnimationFrame(rafIdRef.current);
-      window.removeEventListener("scroll", handleScroll);
-    };
-  }, []);
-
-  // Parallax factors
-  const vennOffset = scrollY * 0.3; // VennDiagram moves more
-  const textOffset = scrollY * 0.1; // Text block moves less
-
   return (
-    <section
-      id="intro-section"
-      className="flex items-center justify-center min-h-screen relative overflow-hidden"
-      style={{ position: "relative", background: "#F3F1EE", filter: `blur(${blur}px)`, transition: "filter 0.2s" }}
-    >
-      <div
-        className="absolute inset-0 z-0 grid grid-cols-10 gap-2 p-4 pointer-events-none"
-        style={{ gridTemplateRows: "repeat(8, minmax(0, 1fr))" }}
-      >
-        {INTRO_SLOTS.map((slot, i) => (
-          <div
-            key={i}
-            className="rounded-[50px] overflow-hidden flex items-center justify-center min-h-0 min-w-0"
-            style={{ gridColumn: slot.col, gridRow: slot.row }}
-          >
-            <img
-              src={imageOrder[i]}
-              alt=""
-              className="max-w-full max-h-full w-auto h-auto object-contain rounded-[50px] opacity-75"
-            />
-          </div>
-        ))}
-      </div>
-      <Header />
-      <div
-        className="w-full max-w-5xl aspect-[27/16] relative z-10 mx-auto flex items-center justify-center venn-diagram-responsive-padding venn-diagram-fixed-width"
-        style={{ transform: `translateY(${vennOffset}px)` }}
-      >
-        <VennDiagram />
-      </div>
-      <div
-        className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 z-20 w-full flex justify-center pointer-events-none"
-        style={{ transform: `translate(-50%, calc(-50% + ${textOffset}px))` }}
-      >
-        <div className="pointer-events-auto">
-          <WhoTextBlock />
-        </div>
-      </div>
-    </section>
+    <IntroLayout id="intro-section">
+      <WhoIntroCenter />
+    </IntroLayout>
   );
 };
 
-export default IntroSection; 
+export default IntroSection;

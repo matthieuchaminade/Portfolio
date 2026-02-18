@@ -45,6 +45,15 @@ body {
   font-display: swap;
 }
 
+@keyframes slow-rotate {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
 /* Remove dark overlay on video hover (native controls) */
 video::-webkit-media-controls-overlay-enclosure {
   display: none !important;

@@ -9,7 +9,10 @@ const HORZ_RECT_HEIGHT = 300;
 const RADIUS = 40;
 
 const BackgroundRects = () => (
-  <div className="w-full max-w-5xl aspect-[1/1] mx-auto flex items-center justify-center z-0 pointer-events-none">
+  <div
+    className="w-full max-w-[850px] max-h-[850px] aspect-[1/1] mx-auto flex items-center justify-center z-0 pointer-events-none"
+    style={{ animation: "slow-rotate 500s linear infinite" }}
+  >
     <svg
       width="100%"
       height="100%"
@@ -24,7 +27,7 @@ const BackgroundRects = () => (
         height={VERT_RECT_HEIGHT}
         rx={RADIUS}
         fill="none"
-        stroke="#C1BFBD"
+        stroke="#323135"
         strokeWidth="1"
         opacity="0.42"
       />
@@ -36,7 +39,7 @@ const BackgroundRects = () => (
         height={HORZ_RECT_HEIGHT}
         rx={RADIUS}
         fill="none"
-        stroke="#C1BFBD"
+        stroke="#323135"
         strokeWidth="1"
         opacity="0.42"
       />
