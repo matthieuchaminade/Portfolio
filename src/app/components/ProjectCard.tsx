@@ -53,7 +53,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project }) => {
         {project.assets.video ? (
           <div
             style={{
-              aspectRatio: "16/9",
+              aspectRatio: "1/1",
               minHeight: 200,
               width: "100%",
               borderRadius: "32px",

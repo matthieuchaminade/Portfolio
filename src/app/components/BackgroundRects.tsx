@@ -27,8 +27,9 @@ const BackgroundRects = () => (
         height={VERT_RECT_HEIGHT}
         rx={RADIUS}
         fill="none"
-        stroke="#323135"
-        strokeWidth="1"
+        stroke="#49474D"
+        strokeWidth="0.75"
+        vectorEffect="non-scaling-stroke"
         opacity="0.42"
       />
       {/* Horizontal rectangle */}
@@ -39,8 +40,9 @@ const BackgroundRects = () => (
         height={HORZ_RECT_HEIGHT}
         rx={RADIUS}
         fill="none"
-        stroke="#323135"
-        strokeWidth="1"
+        stroke="#49474D"
+        strokeWidth="0.75"
+        vectorEffect="non-scaling-stroke"
         opacity="0.42"
       />
     </svg>

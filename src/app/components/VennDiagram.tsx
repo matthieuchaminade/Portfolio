@@ -16,25 +16,31 @@ const VennDiagram: React.FC = () => {
         className="block"
       >
         {/* Left circle */}
-        <circle
-          cx={DIAMETER / 2}
-          cy={DIAMETER / 2}
-          r={RADIUS}
-          stroke="#C1BFBD"
-          strokeWidth="1"
-          fill="none"
-          opacity="0.42"
-        />
+        <g className="venn-circle-left">
+          <circle
+            cx={DIAMETER / 2}
+            cy={DIAMETER / 2}
+            r={RADIUS}
+            stroke="#C1BFBD"
+            strokeWidth="0.75"
+            vectorEffect="non-scaling-stroke"
+            fill="none"
+            opacity="0.42"
+          />
+        </g>
         {/* Right circle */}
-        <circle
-          cx={DIAMETER + DIAMETER / 2 - OVERLAP}
-          cy={DIAMETER / 2}
-          r={RADIUS}
-          stroke="#C1BFBD"
-          strokeWidth="1"
-          fill="none"
-          opacity="0.42"
-        />
+        <g className="venn-circle-right">
+          <circle
+            cx={DIAMETER + DIAMETER / 2 - OVERLAP}
+            cy={DIAMETER / 2}
+            r={RADIUS}
+            stroke="#C1BFBD"
+            strokeWidth="0.75"
+            vectorEffect="non-scaling-stroke"
+            fill="none"
+            opacity="0.42"
+          />
+        </g>
       </svg>
     </div>
   );

@@ -94,7 +94,7 @@ const IntroLayout = ({ id = "intro-section", showImageGrid = true, background = 
               <img
                 src={imageOrder[i]}
                 alt=""
-                className="max-w-full max-h-full w-auto h-auto object-contain rounded-[50px] opacity-75"
+                className="max-w-full max-h-full w-auto h-auto object-contain rounded-[50px] opacity-50"
               />
             </div>
           ))}
