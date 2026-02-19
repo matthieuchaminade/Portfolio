@@ -1,5 +1,5 @@
 "use client";
-import React, { createContext, useContext, useEffect, useLayoutEffect, useRef, useState } from "react";
+import React, { createContext, useEffect, useLayoutEffect, useRef, useState } from "react";
 
 const INTRO_SLOTS = [
   { col: "1 / 4", row: "1 / 5" },    // top left
