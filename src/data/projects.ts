@@ -25,17 +25,20 @@ export interface Project {
 export const projects: Project[] = [
   {
     id: 'notepad-ai',
-    title: 'Notepad AI',
+    title: 'Microsoft Notepad',
     subtitle: 'Windows 11 AI Integration',
-    description: 'Leading design for Notepad on Windows 11 with focus on AI integration and user experience improvements. Redesigned the visual design and shipped various AI-powered features to enhance the writing experience.',
+    description: 'Leading design for everything on Notepad. Experimenting with AI features like generating text from a prompt, rewriting and summarizing text based on the original content and bringing text formatting and markdown syntax to the app.',
     category: 'design',
     year: 2024,
     client: 'Microsoft',
     role: 'Senior Product Designer',
     technologies: ['Figma', 'Windows 11', 'AI/ML', 'Design Systems'],
     assets: {
-      hero: '/images/projects/Notepad_AI/1757176518025927.mp4',
-      video: '/images/projects/Notepad_AI/1757176518025927.mp4'
+      hero: '/images/projects/Notepad_AI/Notepad_write_1.jpg',
+      gallery: [
+        '/images/projects/Notepad_AI/Notepad_rewrite_2.jpg',
+        '/images/projects/Notepad_AI/Notepad_formatting_3.jpg',
+      ],
     }
   },
   {

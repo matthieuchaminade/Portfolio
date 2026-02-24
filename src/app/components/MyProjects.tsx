@@ -56,13 +56,13 @@ const MyProjects = () => {
         style={{
           position: "relative",
           zIndex: 10,
-          maxWidth: "1200px",
           width: "100%",
-          padding: "0 24px",
+          padding: "0 16px",
+          boxSizing: "border-box",
         }}
       >
         <h2
-          className="font-title tracking-tight mb-2 text-center w-full"
+          className="font-title tracking-tight mb-2 text-left w-full"
           style={{
             color: "#B9B9BB",
             fontSize: "3rem",
@@ -70,7 +70,7 @@ const MyProjects = () => {
             marginBottom: "2rem",
           }}
         >
-          Selected Work
+          Work Samples
         </h2>
         <div
           style={{

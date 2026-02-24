@@ -46,17 +46,16 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project }) => {
 
   return (
     <div style={{
-      borderRadius: "16px",
+      borderRadius: "12px",
       overflow: "hidden"
     }}>
-      <div style={{ position: "relative", maxWidth: "800px", margin: "0 auto" }}>
+      <div style={{ position: "relative", width: "100%" }}>
         {project.assets.video ? (
           <div
             style={{
-              aspectRatio: "1/1",
-              minHeight: 200,
+              aspectRatio: "16/9",
               width: "100%",
-              borderRadius: "32px",
+              borderRadius: "12px",
               overflow: "hidden",
               background: "#000",
               isolation: "isolate",
@@ -74,26 +73,65 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project }) => {
                 width: "100%",
                 height: "100%",
                 display: "block",
-                borderRadius: "32px",
-                objectFit: "contain",
+                borderRadius: "12px",
+                objectFit: "cover",
               }}
             />
           </div>
         ) : (
-          <img
-            src={project.assets.hero}
-            alt={project.title}
+          <div
             style={{
+              aspectRatio: "16/9",
               width: "100%",
-              height: "auto",
-              display: "block",
-              borderRadius: "32px"
+              borderRadius: "12px",
+              overflow: "hidden",
+              background: "#000",
             }}
-          />
+          >
+            <img
+              src={project.assets.hero}
+              alt={project.title}
+              style={{
+                width: "100%",
+                height: "100%",
+                display: "block",
+                borderRadius: "12px",
+                objectFit: "cover",
+              }}
+            />
+          </div>
         )}
+        {project.assets.gallery?.length ? (
+          <div style={{ display: "flex", flexDirection: "column", gap: "32px", marginTop: "40px" }}>
+            {project.assets.gallery.map((src, i) => (
+              <div
+                key={i}
+                style={{
+                  aspectRatio: "16/9",
+                  width: "100%",
+                  borderRadius: "12px",
+                  overflow: "hidden",
+                  background: "#000",
+                }}
+              >
+                <img
+                  src={src}
+                  alt=""
+                  style={{
+                    width: "100%",
+                    height: "100%",
+                    display: "block",
+                    borderRadius: "12px",
+                    objectFit: "cover",
+                  }}
+                />
+              </div>
+            ))}
+          </div>
+        ) : null}
       </div>
       
-      <div style={{ padding: "24px 0", maxWidth: "800px", margin: "0 auto" }}>
+      <div style={{ padding: "24px 0", width: "100%" }}>
         <div className="text-left w-full font-bodymono" style={{ color: '#99989A', fontSize: '1rem', lineHeight: '1.6' }}>
           <div className="mb-4">
             <span className="font-bold" style={{ color: '#B9B9BB', display: 'block', marginBottom: '0.25rem' }}>
