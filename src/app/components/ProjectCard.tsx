@@ -206,7 +206,16 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project }) => {
       </div>
       
       <div style={{ padding: "24px 0", width: "100%" }}>
-        <div className="text-left w-full font-bodymono" style={{ color: '#99989A', fontSize: '1rem', lineHeight: '1.6' }}>
+        <div
+          className="text-left w-full font-bodymono"
+          style={{
+            color: "#99989A",
+            fontSize: "1rem",
+            lineHeight: "1.6",
+            maxWidth: "60%",
+            margin: "0 auto",
+          }}
+        >
           <div className="mb-4">
             <span
               className="font-bold"

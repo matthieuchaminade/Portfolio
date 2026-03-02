@@ -62,7 +62,7 @@ const MyProjects = () => {
         }}
       >
         <h2
-          className="font-title tracking-tight mb-2 text-left w-full"
+          className="font-title tracking-tight mb-2 w-full text-center"
           style={{
             color: "#B9B9BB",
             fontSize: "3rem",
