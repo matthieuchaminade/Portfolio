@@ -1,7 +1,6 @@
 export interface Project {
   id: string;
   title: string;
-  subtitle: string;
   description: string;
   category: 'design' | 'development' | 'research';
   year: number;
@@ -26,7 +25,6 @@ export const projects: Project[] = [
   {
     id: 'notepad-ai',
     title: 'Microsoft Notepad',
-    subtitle: 'Windows 11 AI Integration',
     description: 'Leading design for everything on Notepad. Experimenting with AI features like generating text from a prompt, rewriting and summarizing text based on the original content and bringing text formatting and markdown syntax to the app.',
     category: 'design',
     year: 2024,
@@ -42,9 +40,48 @@ export const projects: Project[] = [
     }
   },
   {
+    id: 'snipping-tool-screen-recorder',
+    title: 'Snipping Tool',
+    description: 'Lead designer merging Snipping Tool and Snip & Sketch into a unified product for Windows 11. Worked towards modernizing the experience with features like screen recording with built in flexibility to define your region.',
+    category: 'design',
+    year: 2024,
+    client: 'Microsoft',
+    role: 'Senior Product Designer',
+    technologies: ['Figma', 'Windows 11', 'Accessibility', 'User Research'],
+    assets: {
+      hero: '/images/projects/snipping_tool/screen_recorder.jpg',
+    }
+  },
+  {
+    id: 'sound-recorder',
+    title: 'Sound Recorder',
+    description: 'Lead design to improve overall intuitiveness for the sound recorder experience by rethinking the recording flow. Brought an end to end single track editing experience right to dev handoff but unfortunately org priorties shift and we lost funding for the feature. It still remains one of my favorite projects.',
+    category: 'design',
+    year: 2024,
+    client: 'Microsoft',
+    role: 'Senior Product Designer',
+    technologies: ['Figma', 'Windows 11', 'Design Systems'],
+    assets: {
+      hero: '/images/projects/Sound_recorder/single_track_editing.jpg',
+      video: '/images/projects/Sound_recorder/sound_recorder_recording_trimmed.mp4',
+    }
+  },
+  {
+    id: 'microsoft-store-ai-reviews',
+    title: 'Microsoft Store',
+    description: 'Kicking off at the start of the AI generation boom, an egineer and myself quickly put together a feature to create summaries of reviews in the microsoft store to reduce the time and effort required to get an idea of what people are saying about a specific app.',
+    category: 'design',
+    year: 2024,
+    client: 'Microsoft',
+    role: 'Senior Product Designer',
+    technologies: ['Figma', 'Windows 11', 'AI/ML', 'Design Systems'],
+    assets: {
+      hero: '/images/projects/Store/AI_generated_review_summary.jpg',
+    }
+  },
+  {
     id: 'paint-redesign',
     title: 'Paint Visual Redesign',
-    subtitle: 'Windows 11 Inbox Apps',
     description: 'Complete visual redesign of Microsoft Paint for Windows 11, modernizing the interface while maintaining the familiar user experience. Focused on improving accessibility and touch interaction.',
     category: 'design',
     year: 2024,
@@ -58,7 +95,6 @@ export const projects: Project[] = [
   {
     id: 'snipping-tool',
     title: 'Snipping Tool Enhancement',
-    subtitle: 'Windows 11 Productivity',
     description: 'Enhanced Snipping Tool with new AI-powered features and improved user interface. Added smart capture suggestions and streamlined the annotation workflow for better productivity.',
     category: 'design',
     year: 2024,
@@ -72,7 +108,6 @@ export const projects: Project[] = [
   {
     id: 'mydawgs',
     title: 'And here is a generated image of my dogs',
-    subtitle: 'Personal Project',
     description: '',
     category: 'development',
     year: 2024,

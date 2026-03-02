@@ -73,38 +73,53 @@ const IntroLayout = ({ id = "intro-section", showImageGrid = true, background = 
     <section
       ref={sectionRef}
       id={id}
-      className="flex items-center justify-center min-h-screen relative overflow-hidden"
+      className="min-h-screen relative overflow-hidden"
       style={{
         position: "relative",
         background,
-        ...(showImageGrid && { filter: `blur(${blur}px)`, transition: "filter 0.2s" }),
       }}
     >
-      {showImageGrid && (
-        <div
-          className="absolute inset-0 z-0 grid grid-cols-10 gap-2 p-4 pointer-events-none"
-          style={{ gridTemplateRows: "repeat(8, minmax(0, 1fr))" }}
-        >
-          {INTRO_SLOTS.map((slot, i) => (
-            <div
-              key={i}
-              className="rounded-[50px] overflow-hidden flex items-center justify-center min-h-0 min-w-0"
-              style={{ gridColumn: slot.col, gridRow: slot.row }}
-            >
-              <img
-                src={imageOrder[i]}
-                alt=""
-                className="max-w-full max-h-full w-auto h-auto object-contain rounded-[50px] opacity-50"
-              />
-            </div>
-          ))}
-        </div>
-      )}
-      <IntroScrollContext.Provider value={scrollY}>
-        <IntroBlurContext.Provider value={blur}>
-          {children}
-        </IntroBlurContext.Provider>
-      </IntroScrollContext.Provider>
+      <div
+        className="absolute"
+        style={{
+          inset: "-24px",
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
+          background,
+          ...(showImageGrid && {
+            filter: `blur(${blur}px)`,
+            transition: "filter 0.2s",
+            willChange: "filter",
+          }),
+        }}
+      >
+        {showImageGrid && (
+          <div
+            className="absolute z-0 grid grid-cols-10 gap-2 p-4 pointer-events-none"
+            style={{ inset: "24px", gridTemplateRows: "repeat(8, minmax(0, 1fr))" }}
+          >
+            {INTRO_SLOTS.map((slot, i) => (
+              <div
+                key={i}
+                className="rounded-[50px] overflow-hidden flex items-center justify-center min-h-0 min-w-0"
+                style={{ gridColumn: slot.col, gridRow: slot.row }}
+              >
+                <img
+                  src={imageOrder[i]}
+                  alt=""
+                  className="max-w-full max-h-full w-auto h-auto object-contain rounded-[50px] opacity-50"
+                />
+              </div>
+            ))}
+          </div>
+        )}
+        <IntroScrollContext.Provider value={scrollY}>
+          <IntroBlurContext.Provider value={blur}>
+            {children}
+          </IntroBlurContext.Provider>
+        </IntroScrollContext.Provider>
+      </div>
     </section>
   );
 };
