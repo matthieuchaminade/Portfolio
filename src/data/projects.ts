@@ -55,7 +55,7 @@ export const projects: Project[] = [
   {
     id: 'sound-recorder',
     title: 'Sound Recorder',
-    description: 'Lead design to improve overall intuitiveness for the sound recorder experience by rethinking the recording flow. Brought an end to end single track editing experience right to dev handoff but unfortunately org priorties shift and we lost funding for the feature. It still remains one of my favorite projects.',
+    description: 'Led design to improve overall intuitiveness for the sound recorder experience by rethinking the recording flow. Brought an end to end single track editing experience right to dev handoff but unfortunately org priorties shift and we lost funding for the feature. It still remains one of my favorite projects.',
     category: 'design',
     year: 2024,
     client: 'Microsoft',

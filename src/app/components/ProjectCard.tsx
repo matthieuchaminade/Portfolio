@@ -70,14 +70,14 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project }) => {
   };
 
   return (
-    <div style={{ borderRadius: "12px", overflow: "hidden" }}>
+    <div style={{ borderRadius: "20px", overflow: "hidden" }}>
       <div style={{ position: "relative", width: "100%" }}>
         <div
           onClick={isCarousel ? handleCarouselClick : undefined}
           style={{
             aspectRatio: "16/9",
             width: "100%",
-            borderRadius: "12px",
+            borderRadius: "20px",
             overflow: "hidden",
             background: "#000",
             position: "relative",
@@ -207,7 +207,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project }) => {
       
       <div style={{ padding: "24px 0", width: "100%" }}>
         <div
-          className="text-left w-full font-bodymono"
+          className="project-card-body text-left w-full font-bodymono"
           style={{
             color: "#99989A",
             fontSize: "1rem",
@@ -223,8 +223,9 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project }) => {
                 color: "#D0D0D2",
                 display: "block",
                 marginBottom: "8px",
-                fontSize: "20px",
+                fontSize: "22px",
                 lineHeight: "1.15",
+                fontFamily: "ABCDiatypeThin, sans-serif",
               }}
             >
               {project.title}

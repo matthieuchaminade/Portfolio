@@ -48,7 +48,7 @@ const MyProjects = () => {
             height: "100%",
             objectFit: "cover",
             objectPosition: "center",
-            opacity: 0.15,
+            opacity: 0.1,
           }}
         />
       </div>
