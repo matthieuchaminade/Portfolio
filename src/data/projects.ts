@@ -25,7 +25,7 @@ export const projects: Project[] = [
   {
     id: 'notepad-ai',
     title: 'Microsoft Notepad',
-    description: 'Leading design for everything on Notepad. Experimenting with AI features like generating text from a prompt, rewriting and summarizing text based on the original content and bringing text formatting and markdown syntax to the app.',
+    description: 'Leading design for everything on Notepad. Experimenting with AI features like generating text from a prompt, rewriting and summarizing text based on the original content. Brought customers top user requested features such as text formatting and markdown syntax to the app.',
     category: 'design',
     year: 2024,
     client: 'Microsoft',
@@ -42,7 +42,7 @@ export const projects: Project[] = [
   {
     id: 'snipping-tool-screen-recorder',
     title: 'Snipping Tool',
-    description: 'Lead designer merging Snipping Tool and Snip & Sketch into a unified product for Windows 11. Worked towards modernizing the experience with features like screen recording with built in flexibility to define your region.',
+    description: 'Led the design effort to merge Snipping Tool and Snip & Sketch into a unified product for Windows 11. Modernized the experience with features like screen recording with built in flexibility to define your region.',
     category: 'design',
     year: 2024,
     client: 'Microsoft',
