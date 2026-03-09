@@ -75,3 +75,13 @@ video::-webkit-media-controls-enclosure {
     padding-right: 24px !important;
   }
 }
+
+/* Who section: 24px left/right from viewport at 490px and below.
+   Parent has inset -24px so overlay extends past viewport; 48px padding = 24px from viewport. */
+@media (max-width: 490px) {
+  .who-text-overlay {
+    padding-left: 48px !important;
+    padding-right: 48px !important;
+    box-sizing: border-box;
+  }
+}

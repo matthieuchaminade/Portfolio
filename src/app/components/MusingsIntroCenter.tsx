@@ -20,10 +20,12 @@ export default function MusingsIntroCenter() {
         </div>
       </div>
       <div
-        className="absolute left-1/2 top-1/2 -translate-x-1/2 z-20 w-full flex justify-center pointer-events-none"
+        className="who-text-overlay absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 z-20 w-full flex justify-center items-center pointer-events-none"
         style={{ transform: `translate(-50%, calc(-50% + ${textOffset}px))` }}
       >
-        <MusingsIntroContent />
+        <div className="pointer-events-auto">
+          <MusingsIntroContent />
+        </div>
       </div>
     </>
   );
