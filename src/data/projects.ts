@@ -32,11 +32,12 @@ export const projects: Project[] = [
     role: 'Senior Product Designer',
     technologies: ['Figma', 'Windows 11', 'AI/ML', 'Design Systems'],
     assets: {
-      hero: '/images/projects/Notepad_AI/Notepad_write_1.jpg',
+      hero: '/images/projects/Notepad_AI/Notepad_rewrite_2.jpg',
       gallery: [
-        '/images/projects/Notepad_AI/Notepad_rewrite_2.jpg',
         '/images/projects/Notepad_AI/Notepad_formatting_3.jpg',
       ],
+      video: '/images/projects/Notepad_AI/AI_write_compressed_1.mp4',
+      poster: '/images/projects/Notepad_AI/Notepad_rewrite_2.jpg',
     }
   },
   {
