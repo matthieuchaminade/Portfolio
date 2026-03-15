@@ -6,8 +6,11 @@ interface ProjectCardProps {
   project: Project;
 }
 
+const SWIPE_THRESHOLD_PX = 50;
+
 const ProjectCard: React.FC<ProjectCardProps> = ({ project }) => {
   const videoRef = useRef<HTMLVideoElement>(null);
+  const touchStart = useRef<{ x: number; y: number } | null>(null);
   const [hasUserInteracted, setHasUserInteracted] = useState(false);
 
   // Build slides: video first (optional), then hero, then gallery images
@@ -69,11 +72,31 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project }) => {
     else goNext();
   };
 
+  const handleTouchStart = (e: React.TouchEvent<HTMLDivElement>) => {
+    if (!isCarousel) return;
+    const t = e.touches[0];
+    touchStart.current = { x: t.clientX, y: t.clientY };
+  };
+
+  const handleTouchEnd = (e: React.TouchEvent<HTMLDivElement>) => {
+    if (!isCarousel || !touchStart.current) return;
+    const t = e.changedTouches[0];
+    const dx = t.clientX - touchStart.current.x;
+    const dy = t.clientY - touchStart.current.y;
+    touchStart.current = null;
+    if (Math.abs(dx) < SWIPE_THRESHOLD_PX) return;
+    if (Math.abs(dx) < Math.abs(dy)) return;
+    if (dx > 0) goPrev();
+    else goNext();
+  };
+
   return (
     <div style={{ borderRadius: "20px", overflow: "hidden" }}>
       <div style={{ position: "relative", width: "100%" }}>
         <div
           onClick={isCarousel ? handleCarouselClick : undefined}
+          onTouchStart={isCarousel ? handleTouchStart : undefined}
+          onTouchEnd={isCarousel ? handleTouchEnd : undefined}
           style={{
             aspectRatio: "16/9",
             width: "100%",
@@ -218,12 +241,12 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project }) => {
         >
           <div className="mb-4">
             <span
-              className="font-bold"
+              className="font-bold uppercase"
               style={{
                 color: "#D0D0D2",
                 display: "block",
                 marginBottom: "8px",
-                fontSize: "22px",
+                fontSize: "32px",
                 lineHeight: "1.15",
                 fontFamily: "ABCDiatypeThin, sans-serif",
               }}

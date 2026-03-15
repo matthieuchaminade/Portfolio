@@ -1,0 +1,26 @@
+/* Footershapes: same horizontal drift as Venn diagram (45s ease-in-out) */
+@keyframes footershapes-left-move {
+  0%, 100% {
+    transform: translateX(0);
+  }
+  50% {
+    transform: translateX(100px);
+  }
+}
+
+@keyframes footershapes-right-move {
+  0%, 100% {
+    transform: translateX(0);
+  }
+  50% {
+    transform: translateX(-100px);
+  }
+}
+
+.footershapes-left {
+  animation: footershapes-left-move 45s ease-in-out infinite;
+}
+
+.footershapes-right {
+  animation: footershapes-right-move 45s ease-in-out infinite;
+}
