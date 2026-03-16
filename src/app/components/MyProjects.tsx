@@ -2,6 +2,7 @@
 import React from "react";
 import { projects } from "../../data/projects";
 import ProjectCard from "./ProjectCard";
+import BackgroundTriangles from "./BackgroundTriangles";
 
 const MyProjects = () => {
   return (
@@ -18,6 +19,7 @@ const MyProjects = () => {
         padding: "48px 0",
       }}
     >
+      <BackgroundTriangles />
       <div
         style={{
           position: "relative",
