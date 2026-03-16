@@ -70,7 +70,7 @@ export const projects: Project[] = [
   {
     id: 'microsoft-store-ai-reviews',
     title: 'Microsoft Store',
-    description: 'Kicking off at the start of the AI generation boom, an egineer and myself quickly put together a feature to create summaries of reviews in the microsoft store to reduce the time and effort required to get an idea of what people are saying about a specific app.',
+    description: 'Kicking off at the start of the AI generation boom, an engineer and myself quickly put together a feature to create summaries of reviews in the microsoft store to reduce the time and effort required to get an idea of what people are saying about a specific app.',
     category: 'design',
     year: 2024,
     client: 'Microsoft',

@@ -1,23 +1,9 @@
 "use client";
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { projects } from "../../data/projects";
 import ProjectCard from "./ProjectCard";
 
-const PROJECTS_BG_IMAGES = [
-  "/images/projects_section_background/doodle_lamp_inverted.jpg",
-  "/images/projects_section_background/doodle_phone_inverted.jpg",
-  "/images/projects_section_background/doodle_surface_inverted.jpg",
-];
-
 const MyProjects = () => {
-  const [backgroundImage, setBackgroundImage] = useState(() => PROJECTS_BG_IMAGES[0]);
-
-  useEffect(() => {
-    setBackgroundImage(
-      PROJECTS_BG_IMAGES[Math.floor(Math.random() * PROJECTS_BG_IMAGES.length)]
-    );
-  }, []);
-
   return (
     <section
       style={{
@@ -32,26 +18,6 @@ const MyProjects = () => {
         padding: "48px 0",
       }}
     >
-      <div
-        style={{
-          position: "absolute",
-          inset: 0,
-          zIndex: 0,
-          pointerEvents: "none",
-        }}
-      >
-        <img
-          src={backgroundImage}
-          alt=""
-          style={{
-            width: "100%",
-            height: "100%",
-            objectFit: "cover",
-            objectPosition: "center",
-            opacity: 0.1,
-          }}
-        />
-      </div>
       <div
         style={{
           position: "relative",
