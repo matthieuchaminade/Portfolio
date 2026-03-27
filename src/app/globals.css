@@ -45,6 +45,30 @@ body {
   font-display: swap;
 }
 
+@font-face {
+  font-family: 'NeueMachina';
+  src: url('/fonts/NeueMachina-Regular.otf') format('opentype');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'PPNeueMachinaInktrapLight';
+  src: url('/fonts/PPNeueMachina-InktrapLight.otf') format('opentype');
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Spectral';
+  src: url('/fonts/Spectral-Regular.ttf') format('truetype');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
 @keyframes slow-rotate {
   from {
     transform: rotate(0deg);

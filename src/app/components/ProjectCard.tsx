@@ -1,6 +1,10 @@
 "use client";
 import React, { useRef, useEffect, useState } from "react";
 import { Project } from "../../data/projects";
+import {
+  PROJECT_HEADING_CLASS,
+  PROJECT_HEADING_STYLE,
+} from "./projectHeadingStyles";
 
 interface ProjectCardProps {
   project: Project;
@@ -240,19 +244,16 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project }) => {
           }}
         >
           <div className="mb-4">
-            <span
-              className="font-bold uppercase"
+            <h2
+              className={PROJECT_HEADING_CLASS}
               style={{
-                color: "#D0D0D2",
+                ...PROJECT_HEADING_STYLE,
                 display: "block",
-                marginBottom: "8px",
-                fontSize: "32px",
-                lineHeight: "1.15",
-                fontFamily: "ABCDiatypeThin, sans-serif",
+                margin: "0 0 8px 0",
               }}
             >
               {project.title}
-            </span>
+            </h2>
             <p>
               {project.description}
             </p>

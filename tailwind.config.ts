@@ -15,6 +15,9 @@ export default {
       fontFamily: {
         title: ["ABCDiatypeThin", "sans-serif"],
         bodymono: ["SpaceMono", "monospace"],
+        neueMachina: ["NeueMachina", "sans-serif"],
+        ppNeueMachinaInktrapLight: ["PPNeueMachinaInktrapLight", "sans-serif"],
+        spectral: ["Spectral", "serif"],
       },
     },
   },

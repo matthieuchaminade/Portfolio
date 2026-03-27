@@ -3,6 +3,10 @@ import React from "react";
 import { projects } from "../../data/projects";
 import ProjectCard from "./ProjectCard";
 import BackgroundTriangles from "./BackgroundTriangles";
+import {
+  PROJECT_HEADING_CLASS,
+  PROJECT_HEADING_STYLE,
+} from "./projectHeadingStyles";
 
 const MyProjects = () => {
   return (
@@ -29,17 +33,16 @@ const MyProjects = () => {
           boxSizing: "border-box",
         }}
       >
-        <h2
-          className="font-title tracking-tight mb-2 w-full text-center"
+        <h1
+          className={`${PROJECT_HEADING_CLASS} w-full text-center`}
           style={{
-            color: "#B9B9BB",
-            fontSize: "3rem",
-            fontWeight: 400,
+            ...PROJECT_HEADING_STYLE,
+            fontSize: "4rem",
             marginBottom: "2rem",
           }}
         >
           Work Samples
-        </h2>
+        </h1>
         <div
           style={{
             display: "flex",
