@@ -3,7 +3,7 @@ import MusingsIntroCenter from "../components/MusingsIntroCenter";
 import MusingsEntryList from "../components/MusingsEntryList";
 
 /** Toggle when the hover entry list should return. */
-const SHOW_MUSINGS_ENTRY_LIST = false;
+const SHOW_MUSINGS_ENTRY_LIST = true;
 
 export const metadata = {
   title: "Musings",
