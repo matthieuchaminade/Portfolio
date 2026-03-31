@@ -3,7 +3,7 @@
 import React, { useState } from "react";
 import FooterShapes from "./FooterShapes";
 
-const EMAIL = "matthieuchaminade@gmail.com";
+const EMAIL = "matthieuchaminade33@gmail.com";
 
 export default function Footer() {
   const [copied, setCopied] = useState(false);
