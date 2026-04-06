@@ -37,7 +37,6 @@ const MyProjects = () => {
           className={`${PROJECT_HEADING_CLASS} w-full text-center`}
           style={{
             ...PROJECT_HEADING_STYLE,
-            fontSize: "4rem",
             marginBottom: "2rem",
           }}
         >
