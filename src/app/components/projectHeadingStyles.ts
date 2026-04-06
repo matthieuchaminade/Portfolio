@@ -9,4 +9,4 @@ export const PROJECT_HEADING_STYLE: CSSProperties = {
 };
 
 export const PROJECT_HEADING_CLASS =
-  "font-ppNeueMachinaInktrapLight tracking-tight";
+  "font-ppNeueMachinaInktrapLight tracking-tight uppercase";
