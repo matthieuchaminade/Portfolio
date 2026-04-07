@@ -33,7 +33,7 @@ export default async function MusingPage({ params }: Props) {
   if (!EntryComponent) notFound();
 
   return (
-    <div className="min-h-screen bg-[#F2F2F2]">
+    <div className="min-h-screen bg-[#F3F1EE]">
       <div className="w-full p-8">
         <Link
           href="/musings"

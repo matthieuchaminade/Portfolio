@@ -17,7 +17,7 @@ function bodyParagraphs(body: string | undefined): string[] {
     .filter(Boolean);
 }
 
-export default function ForestEntry({ entry }: Props) {
+export default function MyProcess({ entry }: Props) {
   const paragraphs = bodyParagraphs(entry.body);
 
   return (
@@ -43,7 +43,7 @@ export default function ForestEntry({ entry }: Props) {
           {entry.title}
         </h1>
 
-        <div className="mt-10 space-y-5 font-spectral text-[17px] leading-[25px] text-[#2E2F35]">
+        <div className="mt-10 space-y-5 font-spectral text-[16px] leading-[24px] text-[#2E2F35]">
           {paragraphs.map((p, i) => (
             <p key={i} className="m-0">
               {p}
@@ -54,3 +54,4 @@ export default function ForestEntry({ entry }: Props) {
     </>
   );
 }
+
