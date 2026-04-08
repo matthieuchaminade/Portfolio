@@ -21,7 +21,7 @@ export default function Footer() {
   return (
     <footer
       className="relative w-full py-16 flex items-center justify-center overflow-hidden"
-      style={{ background: "#F3F1EE" }}
+      style={{ background: "#ffffff" }}
     >
       <FooterShapes />
       <div className="relative z-10 flex items-center gap-3">
