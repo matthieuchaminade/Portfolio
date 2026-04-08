@@ -18,10 +18,10 @@ function bodyParagraphs(body: string | undefined): string[] {
 }
 
 const bodyProseClass =
-  "mt-10 space-y-5 font-spectral text-[16px] leading-[24px] text-[#2E2F35]";
+  "mt-10 space-y-5 font-spectral text-[18px] leading-[26px] text-[#2E2F35]";
 
 const h3Class =
-  "m-0 mt-8 font-spectral text-[16px] font-semibold leading-[24px] text-[#2E2F35]";
+  "m-0 mt-8 font-spectral text-[18px] font-semibold leading-[26px] text-[#2E2F35]";
 
 export default function MyProcess({ entry }: Props) {
   const structured = entry.structuredBody;

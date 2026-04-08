@@ -9,7 +9,7 @@ export default function MusingsEntryList() {
           <li key={entry.id} className="m-0 p-0">
             <Link
               href={`/musings/${entry.slug}`}
-              className="group relative block overflow-hidden border-b border-neutral-900/15 bg-[#F3F1EE] px-4 py-5 md:px-6 md:py-6 text-left focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-neutral-900 focus-visible:ring-offset-2 focus-visible:ring-offset-[#F3F1EE] motion-safe:transition-colors motion-reduce:transition-none"
+              className="group relative block overflow-hidden border-b border-neutral-900/15 bg-[#F5F5F5] px-4 py-5 md:px-6 md:py-6 text-left focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-neutral-900 focus-visible:ring-offset-2 focus-visible:ring-offset-[#F5F5F5] motion-safe:transition-colors motion-reduce:transition-none"
             >
               <span
                 className="pointer-events-none absolute inset-0 z-0 bg-neutral-950 opacity-0 transition-opacity duration-200 motion-safe:duration-200 group-hover:opacity-100 motion-reduce:transition-none"

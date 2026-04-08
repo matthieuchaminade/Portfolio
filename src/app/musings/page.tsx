@@ -17,7 +17,7 @@ export default function MusingsPage() {
         <MusingsIntroCenter />
       </IntroLayout>
       {SHOW_MUSINGS_ENTRY_LIST ? (
-        <section className="w-full bg-[#F3F1EE]" aria-label="Musings entries">
+        <section className="w-full bg-[#F5F5F5]" aria-label="Musings entries">
           <MusingsEntryList />
         </section>
       ) : null}
