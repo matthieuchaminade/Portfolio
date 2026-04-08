@@ -17,8 +17,15 @@ function bodyParagraphs(body: string | undefined): string[] {
     .filter(Boolean);
 }
 
+const bodyProseClass =
+  "mt-10 space-y-5 font-spectral text-[16px] leading-[24px] text-[#2E2F35]";
+
+const h3Class =
+  "m-0 mt-8 font-spectral text-[16px] font-semibold leading-[24px] text-[#2E2F35]";
+
 export default function MyProcess({ entry }: Props) {
-  const paragraphs = bodyParagraphs(entry.body);
+  const structured = entry.structuredBody;
+  const fallbackParagraphs = bodyParagraphs(entry.body);
 
   return (
     <>
@@ -43,13 +50,39 @@ export default function MyProcess({ entry }: Props) {
           {entry.title}
         </h1>
 
-        <div className="mt-10 space-y-5 font-spectral text-[16px] leading-[24px] text-[#2E2F35]">
-          {paragraphs.map((p, i) => (
-            <p key={i} className="m-0">
-              {p}
-            </p>
-          ))}
-        </div>
+        {structured ? (
+          <div className={bodyProseClass}>
+            {structured.intro.map((p, i) => (
+              <p key={i} className="m-0">
+                {p}
+              </p>
+            ))}
+
+            <h3 className={h3Class}>{structured.pillarsHeading}</h3>
+            <ul className="m-0 mt-4 list-disc space-y-5 pl-8 marker:text-[#2E2F35]">
+              {structured.pillarItems.map((item, i) => (
+                <li key={i} className="pl-1">
+                  {item}
+                </li>
+              ))}
+            </ul>
+
+            <h3 className={h3Class}>{structured.aiHeading}</h3>
+            {structured.aiParagraphs.map((p, i) => (
+              <p key={i} className="m-0">
+                {p}
+              </p>
+            ))}
+          </div>
+        ) : (
+          <div className={bodyProseClass}>
+            {fallbackParagraphs.map((p, i) => (
+              <p key={i} className="m-0">
+                {p}
+              </p>
+            ))}
+          </div>
+        )}
       </article>
     </>
   );
