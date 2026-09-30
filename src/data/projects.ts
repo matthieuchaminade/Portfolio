@@ -12,6 +12,7 @@ export interface Project {
     gallery?: string[];
     video?: string;
     poster?: string;
+    hasAudio?: boolean;
     documents?: string[];
   };
   links?: {
@@ -22,6 +23,28 @@ export interface Project {
 }
 
 export const projects: Project[] = [
+  {
+    id: 'microsoft-ink-canvas',
+    title: 'Microsoft Ink Canvas',
+    description: 'What started as a side question with the goal of experimenting with how people can interact with AI without being so reliant on a chat based prompt became a hero moment for multi-modal experiences and a new set of devices that impacts teams across Windows, Surface and Microsoft 365. This was an unfunded project (until it wasn’t) driven by a small group of folks on different teams. We made this because we believe it and we think this is just the beginning. I have been on this project since day 0 and proud of the work to get it out the door and into the hands of people everywhere.',
+    category: 'design',
+    year: 2025,
+    client: 'Microsoft',
+    role: 'Senior Product Designer',
+    technologies: ['Figma', 'Windows 11', 'AI/ML', 'Design Systems'],
+    assets: {
+      hero: '/images/projects/Canvas/image_gen_1.jpg',
+      gallery: [
+        '/images/projects/Canvas/image_gen_2.jpg',
+        '/images/projects/Canvas/text_gen_2.jpg',
+        '/images/projects/Canvas/test_gen_1.jpg',
+        '/images/projects/Canvas/conference_booth.jpg',
+      ],
+      video: '/images/projects/Canvas/canvas_sizzle.mp4',
+      poster: '/images/projects/Canvas/image_gen_1.jpg',
+      hasAudio: true,
+    }
+  },
   {
     id: 'notepad-ai',
     title: 'Microsoft Notepad',

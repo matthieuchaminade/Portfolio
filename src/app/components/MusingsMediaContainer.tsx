@@ -30,6 +30,8 @@ const MusingsMediaContainer: React.FC<MusingsMediaContainerProps> = ({
   const [isVideoInView, setIsVideoInView] = useState(false);
   const [isPlaying, setIsPlaying] = useState(false);
   const [isMuted, setIsMuted] = useState(true);
+  const [duration, setDuration] = useState(0);
+  const [currentTime, setCurrentTime] = useState(0);
   const [showControls, setShowControls] = useState(true);
   const hideTimeout = useRef<ReturnType<typeof setTimeout> | null>(null);
 
@@ -59,8 +61,15 @@ const MusingsMediaContainer: React.FC<MusingsMediaContainerProps> = ({
 
     const onPlay = () => setIsPlaying(true);
     const onPause = () => setIsPlaying(false);
+    const onLoadedMetadata = () => {
+      setDuration(Number.isFinite(video.duration) ? video.duration : 0);
+      setCurrentTime(video.currentTime || 0);
+    };
+    const onTimeUpdate = () => setCurrentTime(video.currentTime || 0);
     video.addEventListener("play", onPlay);
     video.addEventListener("pause", onPause);
+    video.addEventListener("loadedmetadata", onLoadedMetadata);
+    video.addEventListener("timeupdate", onTimeUpdate);
 
     const observer = new IntersectionObserver(
       (entries) => {
@@ -75,6 +84,8 @@ const MusingsMediaContainer: React.FC<MusingsMediaContainerProps> = ({
       document.removeEventListener("scroll", enableAutoplay);
       video.removeEventListener("play", onPlay);
       video.removeEventListener("pause", onPause);
+      video.removeEventListener("loadedmetadata", onLoadedMetadata);
+      video.removeEventListener("timeupdate", onTimeUpdate);
     };
   }, []);
 
@@ -113,6 +124,15 @@ const MusingsMediaContainer: React.FC<MusingsMediaContainerProps> = ({
     setIsMuted(video.muted);
     scheduleHide();
   }, [scheduleHide]);
+
+  const seekTo = useCallback((nextTime: number) => {
+    const video = videoRef.current;
+    if (!video) return;
+    const clamped = Math.max(0, Math.min(nextTime, duration || 0));
+    video.currentTime = clamped;
+    setCurrentTime(clamped);
+    scheduleHide();
+  }, [duration, scheduleHide]);
 
   const goPrev = () => setCurrentSlide((i) => (i <= 0 ? slideCount - 1 : i - 1));
   const goNext = () => setCurrentSlide((i) => (i >= slideCount - 1 ? 0 : i + 1));
@@ -357,6 +377,38 @@ const MusingsMediaContainer: React.FC<MusingsMediaContainerProps> = ({
                   </svg>
                 )}
               </button>
+            </div>
+          )}
+
+          {hasVideo && (
+            <div
+              style={{
+                position: "absolute",
+                bottom: "18px",
+                left: "104px",
+                right: "16px",
+                opacity: showControls ? 1 : 0,
+                transition: "opacity 0.3s ease",
+                pointerEvents: showControls ? "auto" : "none",
+              }}
+              onClick={(e) => e.stopPropagation()}
+            >
+              <input
+                type="range"
+                min={0}
+                max={duration || 0}
+                step={0.01}
+                value={Math.min(currentTime, duration || 0)}
+                aria-label="Video timeline"
+                onPointerDown={() => setShowControls(true)}
+                onChange={(e) => seekTo(Number(e.target.value))}
+                style={{
+                  width: "100%",
+                  height: "18px",
+                  accentColor: "rgba(255, 255, 255, 0.9)",
+                  background: "transparent",
+                }}
+              />
             </div>
           )}
         </div>

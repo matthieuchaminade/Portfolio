@@ -16,6 +16,8 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project }) => {
   const videoRef = useRef<HTMLVideoElement>(null);
   const touchStart = useRef<{ x: number; y: number } | null>(null);
   const [hasUserInteracted, setHasUserInteracted] = useState(false);
+  const hasAudio = Boolean(project.assets.hasAudio);
+  const [isMuted, setIsMuted] = useState(true);
 
   // Build slides: video first (optional), then hero, then gallery images
   const hasVideo = Boolean(project.assets.video);
@@ -67,6 +69,17 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project }) => {
 
   const goPrev = () => setCurrentSlide((i) => (i <= 0 ? slideCount - 1 : i - 1));
   const goNext = () => setCurrentSlide((i) => (i >= slideCount - 1 ? 0 : i + 1));
+
+  const toggleMute = (e: React.MouseEvent) => {
+    e.stopPropagation();
+    const video = videoRef.current;
+    if (!video) return;
+    video.muted = !video.muted;
+    setIsMuted(video.muted);
+    if (!video.muted) {
+      video.play().catch(() => {});
+    }
+  };
 
   const handleCarouselClick = (e: React.MouseEvent<HTMLDivElement>) => {
     if (!isCarousel) return;
@@ -228,6 +241,45 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project }) => {
                 <img src="/icons/carousel_next.svg" alt="" width={40} height={40} style={{ display: "block" }} />
               </button>
             </>
+          )}
+
+          {hasVideo && hasAudio && (!isCarousel || currentSlide === 0) && (
+            <button
+              type="button"
+              onClick={toggleMute}
+              aria-label={isMuted ? "Unmute" : "Mute"}
+              style={{
+                position: "absolute",
+                bottom: "16px",
+                left: "16px",
+                width: "36px",
+                height: "36px",
+                borderRadius: "50%",
+                border: "none",
+                background: "rgba(0, 0, 0, 0.55)",
+                backdropFilter: "blur(8px)",
+                cursor: "pointer",
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+                color: "#fff",
+                zIndex: 2,
+              }}
+            >
+              {isMuted ? (
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                  <polygon points="11,5 6,9 2,9 2,15 6,15 11,19" fill="currentColor" stroke="none" />
+                  <line x1="23" y1="9" x2="17" y2="15" />
+                  <line x1="17" y1="9" x2="23" y2="15" />
+                </svg>
+              ) : (
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                  <polygon points="11,5 6,9 2,9 2,15 6,15 11,19" fill="currentColor" stroke="none" />
+                  <path d="M15.54 8.46a5 5 0 0 1 0 7.07" />
+                  <path d="M19.07 4.93a10 10 0 0 1 0 14.14" />
+                </svg>
+              )}
+            </button>
           )}
         </div>
       </div>
