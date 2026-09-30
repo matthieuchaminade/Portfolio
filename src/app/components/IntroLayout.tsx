@@ -12,6 +12,7 @@ const INTRO_IMAGE_SRCS = [
   "/images/Introsection/doodle_lamp.jpg",
   "/images/Introsection/doodle_fan.jpg",
   "/images/Introsection/surface_mouse.jpg",
+  "/images/Introsection/mouse_sketch.jpg",
 ];
 
 function shuffle<T>(arr: T[]): T[] {
